@@ -24,13 +24,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../../release/go", "./NodeLabelDraggingTool.js", "./WallBuildingTool.js", "./WallReshapingTool.js"], factory);
+        define(["require", "exports", "../static/js/go", "./NodeLabelDraggingTool.js", "./WallBuildingTool.js", "./WallReshapingTool.js"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Floorplan = void 0;
-    var go = require("../../../release/go");
+    var go = require("../static/js/go");
     var NodeLabelDraggingTool_js_1 = require("./NodeLabelDraggingTool.js");
     var WallBuildingTool_js_1 = require("./WallBuildingTool.js");
     var WallReshapingTool_js_1 = require("./WallReshapingTool.js");

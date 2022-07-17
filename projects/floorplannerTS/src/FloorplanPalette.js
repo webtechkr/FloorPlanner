@@ -24,13 +24,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../../release/go"], factory);
+        define(["require", "exports", "../static/js/go"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FloorplanPalette = void 0;
-    var go = require("../../../release/go");
+    var go = require("../static/js/go");
     var FloorplanPalette = /** @class */ (function (_super) {
         __extends(FloorplanPalette, _super);
         function FloorplanPalette(div, floorplan /*, nodeDataArray: Array<any>*/) {

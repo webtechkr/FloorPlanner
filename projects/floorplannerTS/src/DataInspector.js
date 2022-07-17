@@ -7,7 +7,7 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../../release/go"], factory);
+        define(["require", "exports", "../static/js/go"], factory);
     }
 })(function (require, exports) {
     "use strict";

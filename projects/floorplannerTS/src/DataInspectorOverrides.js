@@ -10,13 +10,13 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../../release/go", "./DataInspector"], factory);
+        define(["require", "exports", "../static/js/go", "./DataInspector"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.tweakInspectorForFloorplanner = void 0;
-    var go = require("../../../release/go");
+    var go = require("../static/js/go");
     var DataInspector_1 = require("./DataInspector");
     function tweakInspectorForFloorplanner(inspector, myFloorplan, editorHelper) {
         inspector.properties = {

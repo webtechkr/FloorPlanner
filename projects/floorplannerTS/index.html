@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Floorplanner (Typescript)</title>
   <meta name="description" content="" />
@@ -17,10 +15,10 @@
   <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="3sm2ko6q7u1gbix"></script>
 
   <!-- requireJS -->
-  <script src="../../samples/assets/require.js"></script>
+  <script src="./static/js/require.js"></script>
 
   <!-- CSS for GoCloudStorage/Manager -->
-  <link rel="stylesheet" type="text/css" href="../../projects/storage/index.css" />
+  <link rel="stylesheet" type="text/css" href="./static/css/index.css" />
 
   <!-- jQuery UI CSS -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -201,45 +199,8 @@
 
   </div>
 
-  <div id="ge-footer">
-    <span>Built with the <a href="https://gojs.net">GoJS Diagramming Library</a>, by <a href="https://nwoods.com">
-        Northwoods Software</a>.</span>
-  </div>
 
-  <p>
-    This Floorplanner extension of GoJS makes use of multiple classes to allow for users to build, edit, save, and load
-    feature-rich Floorplans.
-    To start, build walls (press the 'Build Walls') button to activate the WallBuildingTool, or drag furniture from
-    Palettes onto the Floorplan area.
-    When you have an area enclosed by walls, you can create a room there by dragging the floor area node from the Wall
-    Parts palette, or by right-clicking
-    within your enclosed area and clicking 'Make Room'.
-  </p>
-  <p>
-    You may also define areas with dividers, which allow one to specify different floor types without the need for wall
-    boundaries. This is useful if you want to have multiple
-    types of flooring within a single room, or want to define an area of floor that has no walls.
-  </p>
-  <p>
-    This extension uses the following Floorplanner-specific files:
-    <ul>
-      <li><a href="./src/Floorplan.ts">Floorplan.ts</a> - A special kind of <a href="../../api/symbols/Diagram.html">Diagram</a>
-        with listeners, properties, and methods that help with floorplanning </li>
-      <li><a href="./src/FloorplanPalette.ts">FloorplanPalette.ts</a> - A special kind of <a href="../../api/symbols/Palette.html">Palette</a>
-        linked with a specific instance of Floorplan </li>
-      <li><a href="./src/WallBuildingTool.ts">WallBuildingTool.ts</a> - For constructing new walls / dividers. This
-        works in conjunction with WallReshapingTool </li>
-      <li><a href="./src/WallReshapingTool.ts">WallReshapingTool.ts</a> - For reshaping walls / dividers from their
-        endpoints </li>
-    </ul>
-  </p>
-  <p>
-    Additionally, this sample makes use of the <a href="../../intro/storage.html">GoCloudStorage</a> library, which
-    allows users to save / load diagram files to / from LocalStorage, Google Drive, Microsoft OneDrive, and Dropbox.
-  </p>
-  <p>
-    To modify this extension, one must modify the .ts source files (in this project's 'src' directory'), then run <code>tsc</code>.
-  </p>
+  
 
   <textarea style='visibility: hidden;' id='defaultModelTextarea'>
 

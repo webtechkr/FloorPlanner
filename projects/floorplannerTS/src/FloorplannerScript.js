@@ -4,13 +4,13 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../../../release/go", "./DataInspectorOverrides", "./EditorHelper", "./Floorplan", "./FloorplanPalette"], factory);
+        define(["require", "exports", "../static/js/go", "./DataInspectorOverrides", "./EditorHelper", "./Floorplan", "./FloorplanPalette"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.init = void 0;
-    var go = require("../../../release/go");
+    var go = require("../static/js/go");
     var DataInspectorOverrides_1 = require("./DataInspectorOverrides");
     var EditorHelper_1 = require("./EditorHelper");
     var Floorplan_1 = require("./Floorplan");
@@ -21,7 +21,7 @@
      * @hidden @internal
      */
     function init(JQUERY) {
-        var editorHelper = new EditorHelper_1.EditorHelper(1, 2, '../../projects/storage', Floorplan_1.Floorplan, JQUERY);
+        var editorHelper = new EditorHelper_1.EditorHelper(1, 2, '../storage', Floorplan_1.Floorplan, JQUERY);
         window.editorHelper = editorHelper;
         // replace generic palettes with FloorplanPalettes
         var myFloorplan = editorHelper.diagrams[0];
