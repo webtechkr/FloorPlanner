@@ -12,18 +12,18 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../static/js/go", "../storage/GoCloudStorageManager", "../storage/GoDropBox", "../storage/GoGoogleDrive", "../storage/GoLocalStorage", "../storage/GoOneDrive", "./DataInspector"], factory);
+        define(["require", "exports", "../../../release/go", "../../storage/GoCloudStorageManager", "../../storage/GoDropBox", "../../storage/GoGoogleDrive", "../../storage/GoLocalStorage", "../../storage/GoOneDrive", "./DataInspector"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.EditorHelper = void 0;
-    var go = require("../static/js/go");
-    var GoCloudStorageManager_1 = require("../storage/GoCloudStorageManager");
-    var GoDropBox_1 = require("../storage/GoDropBox");
-    var GoGoogleDrive_1 = require("../storage/GoGoogleDrive");
-    var GoLocalStorage_1 = require("../storage/GoLocalStorage");
-    var GoOneDrive_1 = require("../storage/GoOneDrive");
+    var go = require("../../../release/go");
+    var GoCloudStorageManager_1 = require("../../storage/GoCloudStorageManager");
+    var GoDropBox_1 = require("../../storage/GoDropBox");
+    var GoGoogleDrive_1 = require("../../storage/GoGoogleDrive");
+    var GoLocalStorage_1 = require("../../storage/GoLocalStorage");
+    var GoOneDrive_1 = require("../../storage/GoOneDrive");
     var DataInspector_1 = require("./DataInspector");
     var EditorHelper = /** @class */ (function () {
         function EditorHelper(diagramsCount, palettesCount, pathToStorage, diagramsType, JQUERY) {

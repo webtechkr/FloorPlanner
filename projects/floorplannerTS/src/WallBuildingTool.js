@@ -24,13 +24,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../static/js/go"], factory);
+        define(["require", "exports", "../../../release/go"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.WallBuildingTool = void 0;
-    var go = require("../static/js/go");
+    var go = require("../../../release/go");
     var WallBuildingTool = /** @class */ (function (_super) {
         __extends(WallBuildingTool, _super);
         function WallBuildingTool() {

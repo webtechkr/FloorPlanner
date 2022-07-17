@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Floorplanner (Typescript)</title>
   <meta name="description" content="" />
   <!-- Copyright 1998-2022 by Northwoods Software Corporation. -->
   <meta charset="UTF-8">
-
-
-  <!-- CDN's for GoCloud Storage subclasses -->
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/2.5.7/Dropbox-sdk.min.js"></script>
-  <script src="https://js.live.net/v7.2/OneDrive.js"></script>
-  <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="3sm2ko6q7u1gbix"></script>
-
+  
   <!-- requireJS -->
-  <script src="./static/js/require.js"></script>
+  <script src="./require.js"></script>
 
   <!-- CSS for GoCloudStorage/Manager -->
-  <link rel="stylesheet" type="text/css" href="./static/css/index.css" />
+  <link rel="stylesheet" type="text/css" href="../storage/index.css" />
 
   <!-- jQuery UI CSS -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -117,10 +112,11 @@
     </div>
 
     <div id="ge-overviews-window" style="visibility: visible" class="ge-draggable ui-draggable">
-      <div id="ge-overviews-window-handle" class="ge-handle ui-draggable-handle">Overview<button id="ge-overviews-window-close"
-          class="ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('ge-overviews-window')">X</button></div>
-      <!--<div id="ge-overviews-container">
-	<h3> Overview</h3><div>  -->
+      <div id="ge-overviews-window-handle" class="ge-handle ui-draggable-handle">
+        Overview
+        <button id="ge-overviews-window-close" class="ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('ge-overviews-window')">X</button>
+      </div>
+      
       <div id="ge-overview-0" style="height: 200px; background: white; border: 1px solid black; "></div>
     </div>
     <!--</div> -->
@@ -133,8 +129,11 @@
   </div>
 
   <div id="optionsWindow" style="visibility: hidden;" class="ge-draggable ui-draggable">
-    <div id="optionsWindow-handle" class="ge-handle ui-draggable-handle">Options <button id="optionsWindowClose" class="windowButtons ge-window-button ge-clickable"
-        onclick="editorHelper.geHideShowWindow('optionsWindow')">X</button></div>
+    <div id="optionsWindow-handle" class="ge-handle ui-draggable-handle">
+      Options 
+      <button id="optionsWindowClose" class="windowButtons ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('optionsWindow')">X</button>
+    </div>
+    
     Units
     <div id="unitsRow" class="row data">
       <form id="unitsForm" onchange="myFloorplan.changeUnits(this)">
@@ -152,6 +151,7 @@
         </div>
       </form>
     </div>
+
     Grid
     <div id="gridRow" class="row">
       <div class="col-2">
@@ -164,6 +164,7 @@
         Grid
       </div>
     </div>
+
     <div id="gridRow" class="row">
       <div class="col-1">
         <label for="unitsConversionFactorInput" style="float: left;">Units/1px (at scale 100%)</label>
@@ -172,6 +173,7 @@
         <input id="" class="unitsBox" value="cm" disabled />
       </div>
     </div>
+
     Preferences
     <div id="miscRow" class="row data">
       <div class="col-1">
@@ -199,8 +201,6 @@
 
   </div>
 
-
-  
 
   <textarea style='visibility: hidden;' id='defaultModelTextarea'>
 

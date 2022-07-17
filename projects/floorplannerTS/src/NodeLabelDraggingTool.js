@@ -20,13 +20,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "../static/js/go"], factory);
+        define(["require", "exports", "../../../release/go"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NodeLabelDraggingTool = void 0;
-    var go = require("../static/js/go");
+    var go = require("../../../release/go");
     // A custom Tool for moving a label on a Node
     var NodeLabelDraggingTool = /** @class */ (function (_super) {
         __extends(NodeLabelDraggingTool, _super);
