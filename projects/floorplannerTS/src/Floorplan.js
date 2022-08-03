@@ -4084,8 +4084,103 @@ var __extends = (this && this.__extends) || (function () {
         var $ = go.GraphObject.make;
         return $(go.Node, 'Spot', { selectionAdorned: false }, $(go.Shape, { name: 'SHAPE', fill: 'black', strokeWidth: 0, height: 10, figure: 'Rectangle' }, new go.Binding('width', 'length').makeTwoWay(), new go.Binding('height').makeTwoWay(), new go.Binding('fill', 'isSelected', function (s, obj) { return s ? 'dodgerblue' : 'black'; }).ofObject(), new go.Binding('stroke', 'isSelected', function (s, obj) { return s ? 'dodgerblue' : 'black'; }).ofObject()));
     }
+
     // Node Data Array for Furniture Palette
     var FURNITURE_NODE_DATA_ARRAY = [
+        {
+            key: 'diningTable',
+            color: '#ffffff',
+            stroke: '#000000',
+            caption: 'Dining Table',
+            type: 'Dining Table',
+            geo: 'F1 M 0 0 L 0 100 200 100 200 0 0 0 M 25 0 L 25 -10 75 -10 75 0 M 125 0 L 125 -10 175 -10 175 0' +
+                ' M 200 25 L 210 25 210 75 200 75 M 125 100 L 125 110 L 175 110 L 175 100 M 25 100 L 25 110 75 110 75 100 M 0 75 -10 75 -10 25 0 25',
+            width: 110,
+            height: 50,
+            notes: '',
+            texture: 'floor3.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['wood1.jpg', 'wood2.jpg', 'floor3.jpg', 'granite1.jpg', 'porcelain1.jpg', 'steel2.jpg']
+        },
+
+        {
+            key: 'diningsmTable',
+            color: '#ffffff',
+            stroke: '#000000',
+            caption: 'Dining Table',
+            type: 'Dining Table',
+            geo: 'F1 M 0 0 L 0 100 100 100 100 0 0 0 M 25 0 L 25 -10 75 -10 75 0 M 125 0 M 200 25' +
+                ' L 210 25 210 75 200 75 M 125 100 M 25 100 L 25 110 75 110 75 100 M 0 75 -10 75 -10 25 0 25',
+            width: 110,
+            height: 50,
+            notes: '',
+            texture: 'floor3.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['wood1.jpg', 'wood2.jpg', 'floor3.jpg', 'granite1.jpg', 'porcelain1.jpg', 'steel2.jpg']
+        },
+
+        {
+            key: 'roundTable',
+            color: '#ffffff',
+            stroke: '#000000',
+            caption: 'Round Table',
+            type: 'Round Table',
+            shape: 'Ellipse',
+            width: 50,
+            height: 50,
+            notes: '',
+            texture: 'floor3.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['wood1.jpg', 'wood2.jpg', 'floor3.jpg', 'granite1.jpg', 'porcelain1.jpg']
+        },
+        {
+            key: 'sofaMedium',
+            color: '#ffffff',
+            stroke: '#000000',
+            caption: 'Sofa',
+            type: 'Sofa',
+            geo: 'F1 M0 0 L80 0 80 40 0 40 0 0 M10 35 L10 10 M0 0 Q8 0 10 10 M0 40 Q40 15 80 40 M70 10 Q72 0 80 0 M70 10 L70 35',
+            height: 45,
+            width: 90,
+            notes: '',
+            texture: 'fabric1.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['fabric1.jpg', 'fabric2.jpg', 'fabric3.jpg']
+        },
+        {
+            key: 'armChair',
+            color: 'purple',
+            stroke: '#000000',
+            caption: 'Arm Chair',
+            type: 'Arm Chair',
+            geo: 'F1 M0 0 L40 0 40 40 0 40 0 0 M10 30 L10 10 M0 0 Q8 0 10 10 M0 40 Q20 15 40 40 M30 10 Q32 0 40 0 M30 10 L30 30',
+            width: 45,
+            height: 45,
+            notes: '',
+            texture: 'fabric1.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['fabric1.jpg', 'fabric2.jpg', 'fabric3.jpg']
+        },        
+        {
+            key: 'toilet',
+            color: '#ffffff',
+            stroke: '#000000',
+            caption: 'Toilet',
+            type: 'Toilet',
+            geo: 'F1 M0 0 L25 0 25 10 0 10 0 0 M20 10 L20 15 5 15 5 10 20 10 M5 15 Q0 15 0 25 Q0 40 12.5 40 Q25 40 25 25 Q25 15 20 15',
+            width: 25,
+            height: 35,
+            notes: '',
+            texture: 'porcelain1.jpg',
+            usesTexture: true,
+            showTextureOptions: true,
+            textures: ['copper1.jpg', 'steel1.jpg', 'porcelain1.jpg']
+        },
         {
             category: 'MultiPurposeNode',
             key: 'MultiPurposeNode',
@@ -4106,131 +4201,6 @@ var __extends = (this && this.__extends) || (function () {
             textures: ['wood1.jpg', 'wood2.jpg', 'granite1.jpg', 'porcelain1.jpg', 'steel1.jpg']
         },
         {
-            key: 'roundTable',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Round Table',
-            type: 'Round Table',
-            shape: 'Ellipse',
-            width: 61,
-            height: 61,
-            notes: '',
-            texture: 'wood1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['wood1.jpg', 'wood2.jpg', 'floor3.jpg', 'granite1.jpg', 'porcelain1.jpg']
-        },
-        {
-            key: 'armChair',
-            color: 'purple',
-            stroke: '#000000',
-            caption: 'Arm Chair',
-            type: 'Arm Chair',
-            geo: 'F1 M0 0 L40 0 40 40 0 40 0 0 M10 30 L10 10 M0 0 Q8 0 10 10 M0 40 Q20 15 40 40 M30 10 Q32 0 40 0 M30 10 L30 30',
-            width: 45,
-            height: 45,
-            notes: '',
-            texture: 'fabric1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['fabric1.jpg', 'fabric2.jpg', 'fabric3.jpg']
-        },
-        {
-            key: 'sofaMedium',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Sofa',
-            type: 'Sofa',
-            geo: 'F1 M0 0 L80 0 80 40 0 40 0 0 M10 35 L10 10 M0 0 Q8 0 10 10 M0 40 Q40 15 80 40 M70 10 Q72 0 80 0 M70 10 L70 35',
-            height: 45,
-            width: 90,
-            notes: '',
-            texture: 'fabric2.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['fabric1.jpg', 'fabric2.jpg', 'fabric3.jpg']
-        },
-        {
-            key: 'sink',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Sink',
-            type: 'Sink',
-            geo: 'F1 M0 0 L40 0 40 40 0 40 0 0z M5 7.5 L18.5 7.5 M 21.5 7.5 L35 7.5 35 35 5 35 5 7.5 M 15 21.25 A 5 5 180 1 0 15 21.24' +
-                'M23 3.75 A 3 3 180 1 1 23 3.74 M21.5 6.25 L 21.5 12.5 18.5 12.5 18.5 6.25 M15 3.75 A 1 1 180 1 1 15 3.74' +
-                'M 10 4.25 L 10 3.25 13 3.25 M 13 4.25 L 10 4.25 M27 3.75 A 1 1 180 1 1 27 3.74 M 26.85 3.25 L 30 3.25 30 4.25 M 26.85 4.25 L 30 4.25',
-            width: 27,
-            height: 27,
-            notes: '',
-            texture: 'steel1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['copper1.jpg', 'steel1.jpg', 'steel2.jpg', 'porcelain1.jpg']
-        },
-        {
-            key: 'doubleSink',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Double Sink',
-            type: 'Double Sink',
-            geo: 'F1 M0 0 L75 0 75 40 0 40 0 0 M5 7.5 L35 7.5 35 35 5 35 5 7.5 M44 7.5 L70 7.5 70 35 40 35 40 9' +
-                'M15 21.25 A5 5 180 1 0 15 21.24 M50 21.25 A 5 5 180 1 0 50 21.24 M40.5 3.75 A3 3 180 1 1 40.5 3.74' +
-                'M40.5 3.75 L50.5 13.75 47.5 16.5 37.5 6.75 M32.5 3.75 A 1 1 180 1 1 32.5 3.74 M 27.5 4.25 L 27.5 3.25 30.5 3.25' +
-                'M 30.5 4.25 L 27.5 4.25 M44.5 3.75 A 1 1 180 1 1 44.5 3.74 M 44.35 3.25 L 47.5 3.25 47.5 4.25 M 44.35 4.25 L 47.5 4.25',
-            height: 27,
-            width: 52,
-            notes: '',
-            texture: 'steel2.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['copper1.jpg', 'steel1.jpg', 'steel2.jpg', 'porcelain1.jpg']
-        },
-        {
-            key: 'toilet',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Toilet',
-            type: 'Toilet',
-            geo: 'F1 M0 0 L25 0 25 10 0 10 0 0 M20 10 L20 15 5 15 5 10 20 10 M5 15 Q0 15 0 25 Q0 40 12.5 40 Q25 40 25 25 Q25 15 20 15',
-            width: 25,
-            height: 35,
-            notes: '',
-            texture: 'porcelain1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['copper1.jpg', 'steel1.jpg', 'porcelain1.jpg']
-        },
-        {
-            key: 'shower',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Shower/Tub',
-            type: 'Shower/Tub',
-            geo: 'F1 M0 0 L40 0 40 60 0 60 0 0 M35 15 L35 55 5 55 5 15 Q5 5 20 5 Q35 5 35 15 M22.5 20 A2.5 2.5 180 1 1 22.5 19.99',
-            width: 45,
-            height: 75,
-            notes: '',
-            texture: 'copper1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['copper1.jpg', 'steel1.jpg', 'porcelain1.jpg']
-        },
-        {
-            key: 'bed',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Bed',
-            type: 'Bed',
-            geo: 'F1 M0 0 L40 0 40 60 0 60 0 0 M 7.5 2.5 L32.5 2.5 32.5 17.5 7.5 17.5 7.5 2.5 M0 20 L40 20 M0 25 L40 25',
-            width: 76.2,
-            height: 101.6,
-            notes: '',
-            texture: 'fabric3.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['fabric1.jpg', 'fabric2.jpg', 'fabric3.jpg']
-        },
-        {
             key: 'staircase',
             color: '#ffffff',
             stroke: '#000000',
@@ -4245,54 +4215,8 @@ var __extends = (this && this.__extends) || (function () {
             usesTexture: true,
             showTextureOptions: true,
             textures: ['wood1.jpg', 'floor1.jpg', 'wood2.jpg', 'steel2.jpg', 'floor2.jpg']
-        },
-        {
-            key: 'stove',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Stove',
-            type: 'Stove',
-            geo: 'F1 M 0 0 L 0 100 100 100 100 0 0 0' +
-                // top left burner
-                'M 30 15 A 15 15 180 1 0 30.01 15' +
-                'M 30 20 A 10 10 180 1 0 30.01 20' +
-                'M 30 25 A 5 5 180 1 0 30.01 25' +
-                // top right burner
-                'M 70 15 A 15 15 180 1 0 70.01 15' +
-                'M 70 20 A 10 10 180 1 0 70.01 20' +
-                'M 70 25 A 5 5 180 1 0 70.01 25' +
-                // bottom left burner
-                'M 30 55 A 15 15 180 1 0 30.01 55' +
-                'M 30 60 A 10 10 180 1 0 30.01 60' +
-                'M 30 65 A 5 5 180 1 0 30.01 65' +
-                // bottom right burner
-                'M 70 55 A 15 15 180 1 0 70.01 55' +
-                'M 70 60 A 10 10 180 1 0 70.01 60' +
-                'M 70 65 A 5 5 180 1 0 70.01 65',
-            width: 75,
-            height: 75,
-            notes: '',
-            texture: 'plaster1.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['steel1.jpg', 'porcelain1.jpg', 'copper1.jpg', 'plaster1.jpg']
-        },
-        {
-            key: 'diningTable',
-            color: '#ffffff',
-            stroke: '#000000',
-            caption: 'Dining Table',
-            type: 'Dining Table',
-            geo: 'F1 M 0 0 L 0 100 200 100 200 0 0 0 M 25 0 L 25 -10 75 -10 75 0 M 125 0 L 125 -10 175 -10 175 0' +
-                ' M 200 25 L 210 25 210 75 200 75 M 125 100 L 125 110 L 175 110 L 175 100 M 25 100 L 25 110 75 110 75 100 M 0 75 -10 75 -10 25 0 25',
-            width: 125,
-            height: 62.5,
-            notes: '',
-            texture: 'wood2.jpg',
-            usesTexture: true,
-            showTextureOptions: true,
-            textures: ['wood1.jpg', 'wood2.jpg', 'floor3.jpg', 'granite1.jpg', 'porcelain1.jpg', 'steel2.jpg']
-        }
+        }        
+        
     ];
     // Node Data Array for Wall Parts Palette
     var WALLPARTS_NODE_DATA_ARRAY = [

@@ -1,235 +1,328 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Floorplanner | Manajoy</title>
+    <meta name="description" content="Manajoy | Table management tools" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./projects/storage/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css"
+    />
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Floorplanner (Typescript)</title>
+    <!-- requireJS -->
+    <script src="./projects/floorplannerTS/require.js"></script>
 
-  <meta name="description" content="" />
-  <!-- Copyright 1998-2022 by Northwoods Software Corporation. -->
-  <meta charset="UTF-8">
+    <!-- CSS for this app -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./projects/floorplannerTS/goeditor.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./projects/floorplannerTS/floorplanner.css"
+    />
 
-  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script>
+      function init() {
+        requirejs.config({
+          paths: {
+            jquery:
+              "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min",
+            "jquery-ui":
+              "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min",
+          },
+        });
 
-  <!-- requireJS -->
-  <script src="./projects/floorplannerTS/require.js"></script>
+        require([
+          "jquery",
+          "./projects/floorplannerTS/src/FloorplannerScript",
+          "jquery-ui",
+        ], function ($, app) {
+          app.init($);
+        });
+      } // end init
+    </script>
+  </head>
 
-  <!-- CSS for GoCloudStorage/Manager -->
-  <link rel="stylesheet" type="text/css" href="./projects/storage/index.css" />
+  <body onload="init();">
+    <div>
+      <nav>
+        <span id="currentStorageSpan"></span>
 
-  <!-- jQuery UI CSS -->
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+        <!-- <ul id="ge-filemenus">
+          <li>
+            <a href="#">File</a>
+            <ul>
+              <li>
+                <a href="#" onclick="handlePromise('New')"
+                  >New
+                  <p class="ge-shortcut">(Ctrl + D)</p></a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="handlePromise('Load')"
+                  >Open...
+                  <p class="ge-shortcut">(Ctrl + O)</p></a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="handlePromise('Save')"
+                  >Save
+                  <p class="ge-shortcut">(Ctrl + S)</p></a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="handlePromise('SaveAs')">Save As...</a>
+              </li>
+              <li>
+                <a href="#" onclick="handlePromise('Delete')"
+                  >Remove...
+                  <p class="ge-shortcut">(Ctrl + R)</p></a
+                >
+              </li>
+              <li><a href="#" onclick="makeDiagramImage()">Export PNG</a></li>
+              <li><a href="#" onclick="makeDiagramSvg()">Export SVG</a></li>
+              <li>
+                <a href="#" onclick="updateCurrentStorageSpan()"
+                  >Change Storage Service</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">View</a>
+            <ul>
+              <li id="ge-viewoption-palettes">
+                <a
+                  href="#"
+                  onclick="editorHelper.geHideShowWindow('ge-palettes-window', true)"
+                  id="ge-palettes-windows-button"
+                  >Palettes
+                  <p class="ge-shortcut">(Ctrl + P)</p>
+                </a>
+              </li>
+              <li id="ge-viewoption-overviews">
+                <a
+                  href="#"
+                  onclick="editorHelper.geHideShowWindow('ge-overviews-window', true)"
+                  id="ge-overview-windows-button"
+                  >Overview
+                  <p class="ge-shortcut">(Ctrl + E)</p>
+                </a>
+              </li>
+              <li id="ge-viewoption-inspector">
+                <a
+                  href="#"
+                  onclick="editorHelper.geHideShowWindow('ge-inspector-window', true)"
+                  id="ge-inspector-windows-button"
+                  >Inspector
+                  <p class="ge-shortcut">(Ctrl + I)</p>
+                </a>
+              </li>
+              <li id="ge-viewoption-options">
+                <a
+                  href="#"
+                  onclick="editorHelper.geHideShowWindow('optionsWindow', true)"
+                  id="optionsWindow-button"
+                  >Options
+                  <p class="ge-shortcut">(Ctrl + B)</p></a
+                >
+              </li>
+            </ul>
+          </li>          
+        </ul> -->
 
-  <!-- CSS for this app -->
-  <link rel="stylesheet" type="text/css" href="./projects/floorplannerTS/goeditor.css" />
-  <link rel="stylesheet" type="text/css" href="./projects/floorplannerTS/floorplanner.css" />
-
-  <script>
-
-    function init() {
-      requirejs.config({
-        "paths": {
-          "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min",
-          "jquery-ui": "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min"
-        },
-      });
-
-      require(["jquery", "./projects/floorplannerTS/src/FloorplannerScript", "jquery-ui"], function ($, app) {
-        app.init($);
-      });
-
-    } // end init
-
-  </script>
-
-</head>
-
-<body onload="init();">
-  <div>
-    <nav>
-      <span id="currentStorageSpan"></span>
-      <ul id="ge-filemenus">
-        <li>
-          <a href="#">File</a>
-          <ul>
-            <li><a href="#" onclick="handlePromise('New')">New <p class="ge-shortcut">(Ctrl + D)</p></a></li>
-            <li><a href="#" onclick="handlePromise('Load')">Open... <p class="ge-shortcut">(Ctrl + O)</p></a></li>
-            <li><a href="#" onclick="handlePromise('Save')">Save <p class="ge-shortcut">(Ctrl + S)</p></a></li>
-            <li><a href="#" onclick="handlePromise('SaveAs')">Save As...</a></li>
-            <li><a href="#" onclick="handlePromise('Delete')">Remove... <p class="ge-shortcut">(Ctrl + R)</p></a></li>
-            <li><a href="#" onclick="makeDiagramImage()">Export PNG</a></li>
-            <li><a href="#" onclick="makeDiagramSvg()">Export SVG</a></li>
-            <li><a href="#" onclick="updateCurrentStorageSpan()">Change Storage Service</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">View</a>
-          <ul>
-            <li id="ge-viewoption-palettes"><a href="#"
-                onclick="editorHelper.geHideShowWindow('ge-palettes-window', true)"
-                id="ge-palettes-windows-button">Palettes
-                <p class="ge-shortcut"> (Ctrl + P)</p>
-              </a></li>
-            <li id="ge-viewoption-overviews"><a href="#"
-                onclick="editorHelper.geHideShowWindow('ge-overviews-window', true)"
-                id="ge-overview-windows-button">Overview
-                <p class="ge-shortcut"> (Ctrl + E)</p>
-              </a></li>
-            <li id="ge-viewoption-inspector"><a href="#"
-                onclick="editorHelper.geHideShowWindow('ge-inspector-window', true)"
-                id="ge-inspector-windows-button">Inspector
-                <p class="ge-shortcut"> (Ctrl + I)</p>
-              </a></li>
-            <li id="ge-viewoption-options"><a href="#" onclick="editorHelper.geHideShowWindow('optionsWindow', true)"
-                id="optionsWindow-button">Options<p class="ge-shortcut">(Ctrl + B)</p></a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <div id="toolButtonsDiv" style="float: left;">
-        <button class="toolButtons" onclick="updateButtons(myFloorplan.enableWallBuilding, this)">Build Walls</button>
-        <button class="toolButtons" onclick="updateButtons(myFloorplan.enableDividerBuilding, this)">Build Room
-          Dividers</button>
-        <button class="toolButtons" onclick="updateButtons(myFloorplan.disableWallBuilding, this)">Select</button>
-      </div>
-
-      <p id="isAutoSavingP">
-        <input type="checkbox" id="isAutoSavingCheckbox" unchecked />
-        <label for="isAutoSavingCheckbox">Autosave
-          Enabled</label>
-      </p>
-
-      <p id="ge-header">GoFloorPlanner</p>
-      <div id="ge-filename">(Unsaved file)</div>
-    </nav>
-
-    <input type="file" id="file-input" style="display: none;" />
-
-    <div id="ge-diagrams-container" style="display: flex;">
-      <div id="ge-diagram-0" style="height: 800px; width: 100%; background: #DAE4E4; border: 1px solid black; "></div>
-    </div>
-
-    <div id="ge-palettes-window" style="visibility: visible" class="ge-draggable ui-draggable">
-      <div id="ge-palettes-window-handle" class="ge-handle ui-draggable-handle">
-        Palettes
-        <button id="ge-palettes-window-close" class="ge-window-button ge-clickable"
-          onclick="editorHelper.geHideShowWindow('ge-palettes-window')">X</button>
-      </div>
-      <div id="ge-palettes-container">
-        <h3>Furniture</h3>
-        <div>
-          <div id="ge-palette-0" style="height: 500px; background: lightgray; border: 1px solid black; "></div>
+        <div id="toolButtonsDiv" style="float: left">
+          <button class="toolButtons" onclick="updateButtons(myFloorplan.enableWallBuilding, this)">Walls</button>
+          <button class="toolButtons" onclick="updateButtons(myFloorplan.enableDividerBuilding, this)"> Room Dividers </button>
+          <button class="toolButtons" onclick="updateButtons(myFloorplan.disableWallBuilding, this)">Select</button>
         </div>
-        <h3>Wall Parts</h3>
-        <div>
-          <div id="ge-palette-1" style="height: 500px; background: lightgray; border: 1px solid black; "></div>
+
+        <p id="isAutoSavingP">
+          <input type="checkbox" id="isAutoSavingCheckbox" unchecked />
+          <label for="isAutoSavingCheckbox">Autosave Enabled</label>
+        </p>
+
+        <p id="ge-header">GoFloorPlanner</p>
+        <div id="ge-filename">(Unsaved file)</div>
+      </nav>
+
+      <input type="file" id="file-input" style="display: none" />
+
+      <div id="ge-diagrams-container" style="display: flex">
+        <div id="ge-diagram-0" style="height: 800px; width: 100%; background: #dae4e4; border: 1px solid black;"></div>
+      </div>
+
+      <div id="ge-palettes-window" style="visibility: visible" class="ge-draggable ui-draggable">
+
+        <div id="ge-palettes-window-handle" class="ge-handle ui-draggable-handle">
+          Tools
+          <button id="ge-palettes-window-close" class="ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('ge-palettes-window')">X</button>
+        </div>
+
+        <!-- Furnitures -->
+        <div id="ge-palettes-container">
+          <h3>Furnitures</h3>
+          <div>
+            <div id="ge-palette-0" style="height: 500px; background: lightgray; border: 1px solid black;"></div>
+          </div>
+          <h3>Wall Parts</h3>
+          <div>
+            <div id="ge-palette-1" style="height: 500px;  background: lightgray; border: 1px solid black;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <div id="ge-overviews-window" style="visibility: visible" class="ge-draggable ui-draggable">
+        <div id="ge-overviews-window-handle" class="ge-handle ui-draggable-handle">
+          Overview
+          <button id="ge-overviews-window-close" class="ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('ge-overviews-window')">
+            X
+          </button>
+        </div>
+
+        <div id="ge-overview-0" style="height: 200px; background: white; border: 1px solid black"></div>
+      </div>
+      <!--</div> -->
+    </div>
+
+    <!-- Properties -->
+    <div id="ge-inspector-window" style="visibility: visible" class="ge-draggable ui-draggable">
+      <div id="ge-inspector-window-handle" class="ge-handle ui-draggable-handle">
+        Properties
+        <button id="ge-inspector-window-close" class="ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('ge-inspector-window')">
+          X
+        </button>
+      </div>
+      <div id="ge-inspector" class="inspector"></div>
+    </div>
+
+    <div id="optionsWindow" style="visibility: hidden" class="ge-draggable ui-draggable">
+      <div id="optionsWindow-handle" class="ge-handle ui-draggable-handle">
+        Options
+        <button id="optionsWindowClose" class="windowButtons ge-window-button ge-clickable" onclick="editorHelper.geHideShowWindow('optionsWindow')">
+          X
+        </button>
+      </div>
+
+      Units
+      <div id="unitsRow" class="row data">
+        <form id="unitsForm" onchange="myFloorplan.changeUnits(this)">
+          <div class="col-4">
+            <input type="radio" name="units" id="centimeters" />cm
+          </div>
+          <div class="col-4">
+            <input type="radio" name="units" id="meters" checked /> m
+          </div>
+          <div class="col-4">
+            <input type="radio" name="units" id="inches" />in
+          </div>
+          <div class="col-4">
+            <input type="radio" name="units" id="feet" />ft
+          </div>
+        </form>
+      </div>
+
+      Grid
+      <div id="gridRow" class="row">
+        <div class="col-2">
+          <label for="gridSizeInput" style="float: left">Grid size</label>
+          <input
+            id="gridSizeInput"
+            placeholder=""
+            class="unitsInput"
+            onchange="myFloorplan.changeGridSize(this)"
+            value="20"
+          />
+          <input id="gridSizeUnitsInput" class="unitsBox" value="cm" disabled />
+        </div>
+        <div class="col-2">
+          <input
+            type="checkbox"
+            id="showGridCheckbox"
+            onchange="myFloorplan.checkboxChanged('showGridCheckbox')"
+            checked
+          />Show Grid
+        </div>
+      </div>
+
+      <div id="gridRow" class="row">
+        <div class="col-1">
+          <label for="unitsConversionFactorInput" style="float: left"
+            >Units/1px (at scale 100%)</label
+          >
+          <input
+            id="unitsConversionFactorInput"
+            placeholder=""
+            onchange="myFloorplan.changeUnitsConversionFactor(this, document.getElementById('gridSizeInput'))"
+            class="unitsInput"
+            value=".02"
+          />
+          <input id="" class="unitsBox" value="cm" disabled />
+        </div>
+      </div>
+
+      Preferences
+      <div id="miscRow" class="row data">
+        <div class="col-1">
+          <input
+            type="checkbox"
+            id="gridSnapCheckbox"
+            onchange="myFloorplan.checkboxChanged('gridSnapCheckbox')"
+            checked
+          />Grid Snap
+        </div>
+        <div class="col-1">
+          <input
+            type="checkbox"
+            id="wallGuidelinesCheckbox"
+            onchange="myFloorplan.checkboxChanged('wallGuidelinesCheckbox')"
+            checked
+          />
+          Show Wall Guidelines
+        </div>
+        <div class="col-1">
+          <input
+            type="checkbox"
+            id="wallLengthsCheckbox"
+            onchange="myFloorplan.checkboxChanged('wallLengthsCheckbox')"
+            checked
+          />
+          Show Wall Lengths
+        </div>
+        <div class="col-1">
+          <input
+            type="checkbox"
+            id="wallAnglesCheckbox"
+            onchange="myFloorplan.checkboxChanged('wallAnglesCheckbox')"
+            checked
+          />
+          Show Wall Angles
+        </div>
+        <div class="col-1">
+          <input
+            type="checkbox"
+            id="onlySmallWallAnglesCheckbox"
+            onchange="myFloorplan.checkboxChanged('onlySmallWallAnglesCheckbox')"
+            checked
+          />
+          Show Only Non-Reflex Wall Angles
         </div>
       </div>
     </div>
 
-    <div id="ge-overviews-window" style="visibility: visible" class="ge-draggable ui-draggable">
-      <div id="ge-overviews-window-handle" class="ge-handle ui-draggable-handle">
-        Overview
-        <button id="ge-overviews-window-close" class="ge-window-button ge-clickable"
-          onclick="editorHelper.geHideShowWindow('ge-overviews-window')">X</button>
-      </div>
+    <textarea style="visibility: hidden" id="defaultModelTextarea"></textarea>
 
-      <div id="ge-overview-0" style="height: 200px; background: white; border: 1px solid black; "></div>
-    </div>
-    <!--</div> -->
-  </div>
-
-  <div id="ge-inspector-window" style="visibility: visible" class="ge-draggable ui-draggable">
-    <div id="ge-inspector-window-handle" class="ge-handle ui-draggable-handle">
-      Properties
-      <button id="ge-inspector-window-close" class="ge-window-button ge-clickable"
-        onclick="editorHelper.geHideShowWindow('ge-inspector-window')">X</button>
-    </div>
-    <div id="ge-inspector" class="inspector"></div>
-  </div>
-
-  <div id="optionsWindow" style="visibility: hidden;" class="ge-draggable ui-draggable">
-    <div id="optionsWindow-handle" class="ge-handle ui-draggable-handle">
-      Options
-      <button id="optionsWindowClose" class="windowButtons ge-window-button ge-clickable"
-        onclick="editorHelper.geHideShowWindow('optionsWindow')">X</button>
-    </div>
-
-    Units
-    <div id="unitsRow" class="row data">
-      <form id="unitsForm" onchange="myFloorplan.changeUnits(this)">
-        <div class="col-4">
-          <input type="radio" name="units" id="centimeters" />cm
-        </div>
-        <div class="col-4">
-          <input type="radio" name="units" id="meters" checked /> m
-        </div>
-        <div class="col-4">
-          <input type="radio" name="units" id="inches" />in
-        </div>
-        <div class="col-4">
-          <input type="radio" name="units" id="feet" />ft
-        </div>
-      </form>
-    </div>
-
-    Grid
-    <div id="gridRow" class="row">
-      <div class="col-2">
-        <label for="gridSizeInput" style="float: left;">Grid size</label>
-        <input id="gridSizeInput" placeholder="" class="unitsInput" onchange="myFloorplan.changeGridSize(this)"
-          value="20" />
-        <input id="gridSizeUnitsInput" class="unitsBox" value="cm" disabled />
-      </div>
-      <div class="col-2">
-        <input type="checkbox" id="showGridCheckbox" onchange="myFloorplan.checkboxChanged('showGridCheckbox')"
-          checked />Show
-        Grid
-      </div>
-    </div>
-
-    <div id="gridRow" class="row">
-      <div class="col-1">
-        <label for="unitsConversionFactorInput" style="float: left;">Units/1px (at scale 100%)</label>
-        <input id="unitsConversionFactorInput" placeholder=""
-          onchange="myFloorplan.changeUnitsConversionFactor(this, document.getElementById('gridSizeInput'))"
-          class="unitsInput" value=".02" />
-        <input id="" class="unitsBox" value="cm" disabled />
-      </div>
-    </div>
-
-    Preferences
-    <div id="miscRow" class="row data">
-      <div class="col-1">
-        <input type="checkbox" id="gridSnapCheckbox" onchange="myFloorplan.checkboxChanged('gridSnapCheckbox')"
-          checked />Grid
-        Snap
-      </div>
-      <div class="col-1">
-        <input type="checkbox" id="wallGuidelinesCheckbox"
-          onchange="myFloorplan.checkboxChanged('wallGuidelinesCheckbox')" checked /> Show Wall Guidelines
-      </div>
-      <div class="col-1">
-        <input type="checkbox" id="wallLengthsCheckbox" onchange="myFloorplan.checkboxChanged('wallLengthsCheckbox')"
-          checked /> Show Wall Lengths
-      </div>
-      <div class="col-1">
-        <input type="checkbox" id="wallAnglesCheckbox" onchange="myFloorplan.checkboxChanged('wallAnglesCheckbox')"
-          checked /> Show Wall Angles
-      </div>
-      <div class="col-1">
-        <input type="checkbox" id="onlySmallWallAnglesCheckbox"
-          onchange="myFloorplan.checkboxChanged('onlySmallWallAnglesCheckbox')" checked /> Show Only Non-Reflex Wall
-        Angles
-      </div>
-    </div>
-  </div>
-
-  <textarea style='visibility: hidden;' id='defaultModelTextarea'></textarea>
-
-
-  <script src="./projects/floorplannerTS/static/js/main.js"></script>
-
-</body>
-
+    <script src="./projects/floorplannerTS/static/js/main.js"></script>
+  </body>
 </html>
